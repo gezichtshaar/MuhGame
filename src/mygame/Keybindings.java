@@ -14,7 +14,7 @@ public enum Keybindings {
     PlayerLeft(KeyInput.KEY_A, "PlayerLeft"),
     PlayerRight(KeyInput.KEY_D, "PlayerRight"),
     PlayerUp(KeyInput.KEY_W, "PlayerUp"),
-    PlayerDown(KeyInput.KEY_S, "PlayerDown");
+    PlayerShoot(KeyInput.KEY_SPACE, "PlayerShoot");
      
     private int keyInput;
     private String name;

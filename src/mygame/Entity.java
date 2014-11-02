@@ -12,6 +12,7 @@ import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Geometry;
 import com.jme3.texture.Texture;
+import java.util.Random;
 
 /**
  *
@@ -46,6 +47,12 @@ public class Entity extends Geometry {
        super.updateLogicalState(tpf);
        this.setLocalTranslation(this.getLocalTranslation().setZ(0));
        physics.setPhysicsLocation(physics.getPhysicsLocation().setZ(0));
+       
+       if (physics.getPhysicsLocation().y < -5) {
+           physics.setPhysicsLocation(physics.getPhysicsLocation().setY(38));
+           physics.setPhysicsLocation(physics.getPhysicsLocation().setX(new Random().nextInt(80)));
+           physics.setLinearVelocity(physics.getLinearVelocity().setY(0));
+       }
        
        if (lastAnimationUpdate > Options.ENTITY_ANIMATION_TIMER_TRESHOLD) {
            updateAnimation();

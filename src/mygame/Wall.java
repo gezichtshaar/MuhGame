@@ -20,12 +20,14 @@ public class Wall extends Geometry {
         this.setLocalTranslation(x, y - 0.1f, -1);
         
         Material material = new Material(game.getAssetManager(), "Common/MatDefs/Light/Lighting.j3md");
-        material.setColor("Diffuse", ColorRGBA.Blue);
-        material.setColor("Ambient", ColorRGBA.Blue);
+        material.setColor("Diffuse", ColorRGBA.Green);
+        material.setColor("Ambient", ColorRGBA.Green);
+        material.setFloat("Shininess", 5f);
         this.setMaterial(material);
         
         RigidBodyControl physics = new RigidBodyControl(0f);
         this.addControl(physics);
         game.getBulletAppState().getPhysicsSpace().add(physics);
+        //physics.setFriction(3f);
     }
 }
