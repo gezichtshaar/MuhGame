@@ -5,7 +5,6 @@
 package mygame.Entities;
 
 import com.jme3.math.Vector3f;
-import Objects.GameObjects;
 import mygame.Main;
 import mygame.Config.Options;
 

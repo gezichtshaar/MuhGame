@@ -56,5 +56,6 @@ public class Floor extends Node {
         game.getBulletAppState().getPhysicsSpace().add(physics);
         
         physics.setPhysicsLocation(new Vector3f(x -width/2, y, 0));
+        physics.setFriction(3f);
     }
 }

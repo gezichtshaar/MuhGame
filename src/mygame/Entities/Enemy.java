@@ -5,7 +5,6 @@
 package mygame.Entities;
 
 import com.jme3.math.Vector3f;
-import Objects.GameObjects;
 import mygame.Main;
 import mygame.Config.Options;
 
@@ -19,6 +18,8 @@ public class Enemy extends Entity {
     public Enemy(Main game, float x, float y) {
         super(game, GameObjects.Enemy2, x, y);
         this.player = game.getPlayer();
+        
+        this.physics.setFriction(0f);
     }
 
     @Override

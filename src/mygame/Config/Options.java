@@ -9,7 +9,7 @@ package mygame.Config;
  * @author lukas
  */
 public class Options {
-    public static final float PLAYER_LIGHT_RADIUS = 8f;
+    public static final float PLAYER_LIGHT_RADIUS = 7f;
     public static final float ENTITY_ANIMATION_TIMER_TRESHOLD = 0.2f;
     public static final float ENTITY_ANIMATION_MOVEMENT_TRESHOLD = 2f;
     public static final float PLAYER_MAX_VELOCITY = 6f;

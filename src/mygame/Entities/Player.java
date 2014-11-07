@@ -11,10 +11,9 @@ import com.jme3.light.PointLight;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
-import Objects.GameObjects;
 import mygame.Config.Keybindings;
-import mygame.Main;
 import mygame.Config.Options;
+import mygame.Main;
 
 /**
  *
@@ -34,10 +33,11 @@ public class Player extends Entity implements AnalogListener {
         
         this.light = new PointLight();
         this.light.setRadius(Options.PLAYER_LIGHT_RADIUS);
-        this.light.setColor(ColorRGBA.White.mult(2));
+        this.light.setColor(ColorRGBA.White.mult(1));
         game.getRootNode().addLight(this.light);
-
-        physics.setFriction(3f);
+        
+        
+        this.physics.setLinearDamping(0.4f);
 
         initInput(game.getInputManager());
     }

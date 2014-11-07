@@ -1,16 +1,16 @@
 package mygame;
 
 import Objects.Floor;
-import mygame.Config.Options;
+import Objects.Updatebles.Thunder;
+import Objects.Updatebles.Updateble;
 import mygame.Entities.Player;
 import mygame.Entities.Enemy;
 import com.jme3.app.SimpleApplication;
 import com.jme3.bullet.BulletAppState;
-import com.jme3.light.AmbientLight;
-import com.jme3.light.DirectionalLight;
-import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.RenderManager;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * test
@@ -18,6 +18,7 @@ import com.jme3.renderer.RenderManager;
  * @author normenhansen
  */
 public class Main extends SimpleApplication {
+    private List<Updateble> updatebles;
     private BulletAppState bulletAppState;
     private Player player;
 
@@ -28,6 +29,7 @@ public class Main extends SimpleApplication {
 
     public Main() {
         super();
+        this.updatebles = new ArrayList<Updateble>();
         this.bulletAppState = new BulletAppState();
     }
 
@@ -36,6 +38,8 @@ public class Main extends SimpleApplication {
         this.flyCam.setEnabled(false);
         this.cam.setLocation(new Vector3f(0, 0, 20));
         stateManager.attach(bulletAppState);
+        
+        updatebles.add(new Thunder(this));
 
         buildFloors();
         rootNode.attachChild(player = new Player(this, this.cam, 0, 15));
@@ -44,6 +48,9 @@ public class Main extends SimpleApplication {
 
     @Override
     public void simpleUpdate(float tpf) {
+        for(Updateble updateble : updatebles) {
+            updateble.update(tpf);
+        }
     }
 
     @Override
@@ -59,17 +66,17 @@ public class Main extends SimpleApplication {
         }
     }
 
+    private void spawnEnemies() {
+        for (int n = 0; n < 4; n++) {
+            rootNode.attachChild(new Enemy(this, n * 20, 30));
+        }
+    }
+    
     public BulletAppState getBulletAppState() {
         return bulletAppState;
     }
 
     public Player getPlayer() {
         return player;
-    }
-
-    private void spawnEnemies() {
-        for (int n = 0; n < 4; n++) {
-            rootNode.attachChild(new Enemy(this, n * 20, 30));
-        }
     }
 }

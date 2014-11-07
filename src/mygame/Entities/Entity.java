@@ -13,10 +13,9 @@ import com.jme3.math.Vector3f;
 import com.jme3.scene.Geometry;
 import com.jme3.texture.Texture;
 import java.util.Random;
-import Objects.GameObjects;
-import mygame.Main;
 import mygame.Config.Options;
 import mygame.Config.TextureMap;
+import mygame.Main;
 import mygame.WorkingQuad;
 
 /**
