@@ -1,5 +1,9 @@
 package mygame;
 
+import Objects.Floor;
+import mygame.Config.Options;
+import mygame.Entities.Player;
+import mygame.Entities.Enemy;
 import com.jme3.app.SimpleApplication;
 import com.jme3.bullet.BulletAppState;
 import com.jme3.light.AmbientLight;
@@ -34,18 +38,12 @@ public class Main extends SimpleApplication {
         stateManager.attach(bulletAppState);
 
         buildFloors();
-        rootNode.attachChild(player = new Player(this, 0, 15));
+        rootNode.attachChild(player = new Player(this, this.cam, 0, 15));
         spawnEnemies();
-        
-        DirectionalLight sun = new DirectionalLight();
-        sun.setDirection(new Vector3f(0, 0, -1));
-        sun.setColor(ColorRGBA.White);
-        //rootNode.addLight(new AmbientLight());
     }
 
     @Override
     public void simpleUpdate(float tpf) {
-        //TODO: add update code
     }
 
     @Override
@@ -70,7 +68,7 @@ public class Main extends SimpleApplication {
     }
 
     private void spawnEnemies() {
-        for (int n = 0; n < 20; n++) {
+        for (int n = 0; n < 4; n++) {
             rootNode.attachChild(new Enemy(this, n * 20, 30));
         }
     }
