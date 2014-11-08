@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Objects.Updatebles;
+package mygame.Updatebles;
 
 import com.jme3.light.AmbientLight;
 import com.jme3.scene.Node;

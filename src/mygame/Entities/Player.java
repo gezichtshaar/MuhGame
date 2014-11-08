@@ -26,7 +26,7 @@ public class Player extends Entity implements AnalogListener {
     private PointLight light;
 
     public Player(Main game, Camera cam, float x, float y) {
-        super(game, GameObjects.Enemy1, x, y);
+        super(game, EntityTypes.Enemy1, x, y);
         this.cam = cam;
         this.vel = 0f;
         this.zoom = 0f;

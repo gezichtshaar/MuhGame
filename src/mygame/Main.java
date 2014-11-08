@@ -1,8 +1,8 @@
 package mygame;
 
-import Objects.Floor;
-import Objects.Updatebles.Thunder;
-import Objects.Updatebles.Updateble;
+import mygame.Objects.Floor;
+import mygame.Updatebles.Thunder;
+import mygame.Updatebles.Updateble;
 import mygame.Entities.Player;
 import mygame.Entities.Enemy;
 import com.jme3.app.SimpleApplication;

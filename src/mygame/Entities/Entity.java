@@ -14,7 +14,7 @@ import com.jme3.scene.Geometry;
 import com.jme3.texture.Texture;
 import java.util.Random;
 import mygame.Config.Options;
-import mygame.Config.TextureMap;
+import mygame.TextureMap;
 import mygame.Main;
 import mygame.WorkingQuad;
 
@@ -27,7 +27,7 @@ public class Entity extends Geometry {
     protected TextureMap textureMap;
     private float lastAnimationUpdate;
             
-    public Entity(Main game, GameObjects gameObject, float x, float y) {
+    public Entity(Main game, EntityTypes gameObject, float x, float y) {
         super("Entity", new WorkingQuad(new Vector2f(-gameObject.getWidth()/2, -gameObject.getHeight()/2), gameObject.getWidth(), gameObject.getHeight()));
         this.textureMap = new TextureMap(game.getAssetManager(), gameObject.getTextureNames());
         this.lastAnimationUpdate = 0f;

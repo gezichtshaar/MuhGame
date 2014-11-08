@@ -16,7 +16,7 @@ public class Enemy extends Entity {
     private Player player;
     
     public Enemy(Main game, float x, float y) {
-        super(game, GameObjects.Enemy2, x, y);
+        super(game, EntityTypes.Enemy2, x, y);
         this.player = game.getPlayer();
         
         this.physics.setFriction(0f);
