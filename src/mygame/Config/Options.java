@@ -17,4 +17,6 @@ public class Options {
     public static final float FLOOR_COLOR_TIMER = 0.2f;
     public static final float ENEMY_SPOT_RADIUS = 10;
     public static final float BULLET_SPEED = 20;
+    public static final float THUNDER_AMOUNT = 0.05f;
+    public static final float THUNDER_TIME = 20f;
 }

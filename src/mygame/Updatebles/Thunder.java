@@ -7,6 +7,7 @@ package mygame.Updatebles;
 import com.jme3.light.AmbientLight;
 import com.jme3.scene.Node;
 import java.util.Random;
+import mygame.Config.Options;
 import mygame.Main;
 
 /**
@@ -28,7 +29,7 @@ public class Thunder extends AmbientLight implements Updateble {
     public void update(float tpf) {
         if (timer <= 0) {
             reset();
-        }else if (timer <= 0.1f) {
+        }else if (timer <= Options.THUNDER_AMOUNT) {
             if (isOn) {
                 this.attachedNode.removeLight(this);
             }else{
@@ -42,7 +43,7 @@ public class Thunder extends AmbientLight implements Updateble {
 
     private void reset() {
         this.attachedNode.removeLight(this);
-        this.timer = new Random().nextFloat() * 10;
+        this.timer = new Random().nextFloat() * Options.THUNDER_TIME;
         this.isOn = false;
     }
 }

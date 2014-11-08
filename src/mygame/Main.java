@@ -2,11 +2,14 @@ package mygame;
 
 import com.jme3.app.SimpleApplication;
 import com.jme3.bullet.BulletAppState;
+import com.jme3.bullet.collision.PhysicsCollisionEvent;
+import com.jme3.bullet.collision.PhysicsCollisionListener;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.RenderManager;
 import java.util.ArrayList;
 import java.util.List;
 import mygame.Entities.Enemy;
+import mygame.Entities.Entity;
 import mygame.Entities.Player;
 import mygame.Objects.Floor;
 import mygame.Updatebles.Thunder;
@@ -17,7 +20,7 @@ import mygame.Updatebles.Updateble;
  *
  * @author normenhansen
  */
-public class Main extends SimpleApplication {
+public class Main extends SimpleApplication implements PhysicsCollisionListener {
     private List<Updateble> updatebles;
     private BulletAppState bulletAppState;
     private Player player;
@@ -37,7 +40,9 @@ public class Main extends SimpleApplication {
     public void simpleInitApp() {
         this.flyCam.setEnabled(false);
         this.cam.setLocation(new Vector3f(0, 0, 20));
+        
         stateManager.attach(bulletAppState);
+        this.bulletAppState.getPhysicsSpace().addCollisionListener(this);
         
         updatebles.add(new Thunder(this));
 
@@ -56,6 +61,14 @@ public class Main extends SimpleApplication {
     @Override
     public void simpleRender(RenderManager rm) {
         //TODO: add render code
+    }
+    
+    @Override
+    public final void collision(PhysicsCollisionEvent event) {
+        if ("Entity".equals(event.getNodeA().getName()) && "Entity".equals(event.getNodeB().getName())) {
+            ((Entity)event.getNodeA()).actOnCollision((Entity)event.getNodeB());
+            ((Entity)event.getNodeB()).actOnCollision((Entity)event.getNodeA());
+        }
     }
     
     private void buildFloors() {

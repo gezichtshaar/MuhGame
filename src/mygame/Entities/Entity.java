@@ -25,7 +25,7 @@ import mygame.WorkingQuad;
  *
  * @author lukas
  */
-public abstract class Entity extends Geometry implements PhysicsCollisionListener {
+public abstract class Entity extends Geometry{
     protected RigidBodyControl physics;
     protected TextureMap textureMap;
     private float lastAnimationUpdate;
@@ -45,7 +45,6 @@ public abstract class Entity extends Geometry implements PhysicsCollisionListene
         this.physics.setAngularFactor(0f);
         this.addControl(physics);
         game.getBulletAppState().getPhysicsSpace().add(this.physics);
-        game.getBulletAppState().getPhysicsSpace().addCollisionListener(this);
         
         this.physics.setPhysicsLocation(new Vector3f(x, y, 0));
     }
@@ -82,15 +81,6 @@ public abstract class Entity extends Geometry implements PhysicsCollisionListene
     
     protected void updateTexture(Texture texture) {
         this.material.setTexture("DiffuseMap", texture);
-    }
-
-    @Override
-    public final void collision(PhysicsCollisionEvent event) {
-        if (event.getNodeA() == this && "Entity".equals(event.getNodeB().getName())) {
-            ((Entity)event.getNodeB()).actOnCollision(this);
-        }else if (event.getNodeB() == this && "Entity".equals(event.getNodeA().getName())){
-            ((Entity)event.getNodeA()).actOnCollision(this);
-        }
     }
     
     public abstract void actOnCollision(Entity e);
