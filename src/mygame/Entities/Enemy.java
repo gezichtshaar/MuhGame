@@ -33,7 +33,9 @@ public class Enemy extends Entity {
 
     @Override
     public void actOnCollision(Entity e) {
-        Vector3f impulse = this.physics.getLinearVelocity().clone();
-        e.physics.applyImpulse(impulse.setY(0).normalize().mult(3), Vector3f.ZERO);
+        if (e.getClass() == Player.class) {
+            Vector3f impulse = this.physics.getLinearVelocity().clone();
+            e.physics.applyImpulse(impulse.setY(0).normalize().mult(3), Vector3f.ZERO);
+        }
     }
 }

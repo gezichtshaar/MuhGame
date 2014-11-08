@@ -81,4 +81,9 @@ public abstract class Entity extends Geometry{
     }
     
     public abstract void actOnCollision(Entity e);
+    
+        
+    public Vector3f getLocation() {
+        return this.physics.getPhysicsLocation();
+    }
 }

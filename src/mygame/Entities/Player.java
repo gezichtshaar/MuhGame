@@ -14,6 +14,8 @@ import com.jme3.renderer.Camera;
 import mygame.Config.Keybindings;
 import mygame.Config.Options;
 import mygame.Main;
+import mygame.Weapons.Gun;
+import mygame.Weapons.Weapon;
 
 /**
  *
@@ -23,6 +25,7 @@ public class Player extends Entity implements AnalogListener {
     private Camera cam;
     private float vel;
     private float zoom;
+    private Weapon weapon;
     private PointLight light;
 
     public Player(Main game, Camera cam, float x, float y) {
@@ -30,12 +33,12 @@ public class Player extends Entity implements AnalogListener {
         this.cam = cam;
         this.vel = 0f;
         this.zoom = 0f;
+        this.weapon = new Gun(game, 10);
         
         this.light = new PointLight();
         this.light.setRadius(Options.PLAYER_LIGHT_RADIUS);
         this.light.setColor(ColorRGBA.White.mult(1));
         game.getRootNode().addLight(this.light);
-        
         
         this.physics.setLinearDamping(0.4f);
 
@@ -91,9 +94,5 @@ public class Player extends Entity implements AnalogListener {
             this.physics.setLinearVelocity(this.physics.getLinearVelocity().setX(vel * Options.PLAYER_MAX_VELOCITY));
         }
         this.vel = 0f;
-    }
-    
-    public Vector3f getLocation() {
-        return this.physics.getPhysicsLocation();
     }
 }
