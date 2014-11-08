@@ -35,7 +35,5 @@ public class Enemy extends Entity {
     public void actOnCollision(Entity e) {
         Vector3f impulse = this.physics.getLinearVelocity().clone();
         e.physics.applyImpulse(impulse.setY(0).normalize().mult(3), Vector3f.ZERO);
-        
-        System.out.println(e);
     }
 }

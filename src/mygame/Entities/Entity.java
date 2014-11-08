@@ -86,10 +86,10 @@ public abstract class Entity extends Geometry implements PhysicsCollisionListene
 
     @Override
     public final void collision(PhysicsCollisionEvent event) {
-        if (event.getNodeA() != this) {
-            if ("Entity".equals(event.getNodeA().getName())) {
-                ((Entity)event.getNodeA()).actOnCollision(this);
-            }
+        if (event.getNodeA() == this && "Entity".equals(event.getNodeB().getName())) {
+            ((Entity)event.getNodeB()).actOnCollision(this);
+        }else if (event.getNodeB() == this && "Entity".equals(event.getNodeA().getName())){
+            ((Entity)event.getNodeA()).actOnCollision(this);
         }
     }
     

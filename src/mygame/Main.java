@@ -1,17 +1,16 @@
 package mygame;
 
-import mygame.Objects.Floor;
-import mygame.Updatebles.Thunder;
-import mygame.Updatebles.Updateble;
-import mygame.Entities.Player;
-import mygame.Entities.Enemy;
 import com.jme3.app.SimpleApplication;
 import com.jme3.bullet.BulletAppState;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.RenderManager;
 import java.util.ArrayList;
 import java.util.List;
-import mygame.Entities.Entity;
+import mygame.Entities.Enemy;
+import mygame.Entities.Player;
+import mygame.Objects.Floor;
+import mygame.Updatebles.Thunder;
+import mygame.Updatebles.Updateble;
 
 /**
  * test
