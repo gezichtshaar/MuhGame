@@ -4,6 +4,8 @@
  */
 package mygame.Entities;
 
+import com.jme3.bullet.collision.PhysicsCollisionEvent;
+import com.jme3.bullet.collision.PhysicsCollisionListener;
 import com.jme3.bullet.collision.shapes.CapsuleCollisionShape;
 import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.material.Material;
@@ -11,6 +13,7 @@ import com.jme3.material.RenderState;
 import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Geometry;
+import com.jme3.scene.Spatial;
 import com.jme3.texture.Texture;
 import java.util.Random;
 import mygame.Config.Options;
@@ -22,7 +25,7 @@ import mygame.WorkingQuad;
  *
  * @author lukas
  */
-public class Entity extends Geometry {
+public abstract class Entity extends Geometry implements PhysicsCollisionListener {
     protected RigidBodyControl physics;
     protected TextureMap textureMap;
     private float lastAnimationUpdate;
@@ -42,6 +45,7 @@ public class Entity extends Geometry {
         this.physics.setAngularFactor(0f);
         this.addControl(physics);
         game.getBulletAppState().getPhysicsSpace().add(this.physics);
+        game.getBulletAppState().getPhysicsSpace().addCollisionListener(this);
         
         this.physics.setPhysicsLocation(new Vector3f(x, y, 0));
     }
@@ -79,4 +83,15 @@ public class Entity extends Geometry {
     protected void updateTexture(Texture texture) {
         this.material.setTexture("DiffuseMap", texture);
     }
+
+    @Override
+    public final void collision(PhysicsCollisionEvent event) {
+        if (event.getNodeA() != this) {
+            if ("Entity".equals(event.getNodeA().getName())) {
+                ((Entity)event.getNodeA()).actOnCollision(this);
+            }
+        }
+    }
+    
+    public abstract void actOnCollision(Entity e);
 }

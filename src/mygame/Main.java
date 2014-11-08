@@ -11,6 +11,7 @@ import com.jme3.math.Vector3f;
 import com.jme3.renderer.RenderManager;
 import java.util.ArrayList;
 import java.util.List;
+import mygame.Entities.Entity;
 
 /**
  * test
@@ -42,7 +43,7 @@ public class Main extends SimpleApplication {
         updatebles.add(new Thunder(this));
 
         buildFloors();
-        rootNode.attachChild(player = new Player(this, this.cam, 0, 15));
+        this.rootNode.attachChild(player = new Player(this, this.cam, 0, 15));
         spawnEnemies();
     }
 
@@ -68,7 +69,7 @@ public class Main extends SimpleApplication {
 
     private void spawnEnemies() {
         for (int n = 0; n < 4; n++) {
-            rootNode.attachChild(new Enemy(this, n * 20, 30));
+            this.rootNode.attachChild(new Enemy(this, n * 20, 30));
         }
     }
     

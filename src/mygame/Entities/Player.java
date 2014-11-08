@@ -4,6 +4,7 @@
  */
 package mygame.Entities;
 
+import com.jme3.bullet.collision.PhysicsCollisionEvent;
 import com.jme3.input.InputManager;
 import com.jme3.input.controls.AnalogListener;
 import com.jme3.input.controls.KeyTrigger;
@@ -11,6 +12,7 @@ import com.jme3.light.PointLight;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
+import com.jme3.scene.Spatial;
 import mygame.Config.Keybindings;
 import mygame.Config.Options;
 import mygame.Main;
@@ -71,6 +73,10 @@ public class Player extends Entity implements AnalogListener {
         updateCamera(tpf);
         
         this.light.setPosition(this.physics.getPhysicsLocation().add(0, 0, 3));
+    }
+    
+    @Override
+    public void actOnCollision(Entity e) {
     }
     
     private void updateCamera(float tpf) {

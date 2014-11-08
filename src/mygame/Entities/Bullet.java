@@ -17,5 +17,8 @@ public class Bullet extends Entity {
         super(game, EntityTypes.Bullet, x, y);
         this.physics.setLinearVelocity(direction.mult(Options.BULLET_SPEED));
     }
-    
+
+    @Override
+    public void actOnCollision(Entity e) {
+    }
 }
