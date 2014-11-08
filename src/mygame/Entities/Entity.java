@@ -4,8 +4,6 @@
  */
 package mygame.Entities;
 
-import com.jme3.bullet.collision.PhysicsCollisionEvent;
-import com.jme3.bullet.collision.PhysicsCollisionListener;
 import com.jme3.bullet.collision.shapes.CapsuleCollisionShape;
 import com.jme3.bullet.control.RigidBodyControl;
 import com.jme3.material.Material;
@@ -13,12 +11,11 @@ import com.jme3.material.RenderState;
 import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Geometry;
-import com.jme3.scene.Spatial;
 import com.jme3.texture.Texture;
 import java.util.Random;
 import mygame.Config.Options;
-import mygame.TextureMap;
 import mygame.Main;
+import mygame.TextureMap;
 import mygame.WorkingQuad;
 
 /**

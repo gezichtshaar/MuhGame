@@ -20,5 +20,6 @@ public class Bullet extends Entity {
 
     @Override
     public void actOnCollision(Entity e) {
+        removeFromParent();
     }
 }
