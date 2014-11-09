@@ -44,6 +44,8 @@ public class Main extends SimpleApplication implements PhysicsCollisionListener 
     @Override
     public void simpleInitApp() {
         this.flyCam.setEnabled(false);
+        setDisplayFps(false);
+        setDisplayStatView(false);
         this.audioMap = new AudioMap(assetManager, new AudioMap.Types[]{AudioMap.Types.GUN, AudioMap.Types.AXE});
         this.cam.setLocation(new Vector3f(0, 0, 20));
 
@@ -52,7 +54,7 @@ public class Main extends SimpleApplication implements PhysicsCollisionListener 
 
         updatables.add(new Thunder(this));
         updatables.add(new GuiManager(this));
-
+        
         buildFloors();
         this.rootNode.attachChild(player = new Player(this, this.cam, 0, 15));
         spawnEnemies();

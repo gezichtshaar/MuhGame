@@ -22,11 +22,13 @@ import mygame.Weapons.Weapon;
  * @author lukas
  */
 public class Player extends Entity implements AnalogListener {
+
     private Camera cam;
     private float vel;
     private float zoom;
     private Weapon weapon;
     private PointLight light;
+    private int score;
 
     public Player(Main game, Camera cam, float x, float y) {
         super(game, EntityTypes.Enemy1, x, y);
@@ -34,12 +36,13 @@ public class Player extends Entity implements AnalogListener {
         this.vel = 0f;
         this.zoom = 0f;
         this.weapon = new Gun(game, 10);
-        
+        this.score = 100;
+
         this.light = new PointLight();
         this.light.setRadius(Options.PLAYER_LIGHT_RADIUS);
         this.light.setColor(ColorRGBA.White.mult(1));
         game.getRootNode().addLight(this.light);
-        
+
         this.physics.setLinearDamping(0.4f);
 
         initInput(game.getInputManager());
@@ -61,7 +64,7 @@ public class Player extends Entity implements AnalogListener {
         if (Keybindings.PlayerRight.getName().equals(name)) {
             vel = 1;
         }
-        
+
         if (Keybindings.PlayerShoot.getName().equals(name)) {
         }
     }
@@ -69,21 +72,21 @@ public class Player extends Entity implements AnalogListener {
     @Override
     public void updateLogicalState(float tpf) {
         super.updateLogicalState(tpf);
-        
+
         updateMovement(tpf);
         updateCamera(tpf);
-        
+
         this.light.setPosition(this.physics.getPhysicsLocation().add(0, 0, 3));
     }
-    
+
     @Override
     public void actOnCollision(Entity e) {
     }
-    
+
     private void updateCamera(float tpf) {
-        if(this.physics.getLinearVelocity().length() / Options.PLAYER_MAX_VELOCITY > zoom) {
+        if (this.physics.getLinearVelocity().length() / Options.PLAYER_MAX_VELOCITY > zoom) {
             zoom += 1 * tpf;
-        }else{
+        } else {
             zoom -= 2 * tpf;
         }
         this.cam.setLocation(new Vector3f(this.getLocation()).setZ(Options.PLAYER_CAMERA_DISTANCE + 5 * zoom));
@@ -94,5 +97,13 @@ public class Player extends Entity implements AnalogListener {
             this.physics.setLinearVelocity(this.physics.getLinearVelocity().setX(vel * Options.PLAYER_MAX_VELOCITY));
         }
         this.vel = 0f;
+    }
+
+    public int getScore() {
+        return score;
+    }
+    
+    public int getAmmo(){
+        return 1337;
     }
 }
