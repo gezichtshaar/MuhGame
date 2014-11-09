@@ -29,13 +29,14 @@ public abstract class Entity extends Geometry {
     protected TextureMap textureMap;
     private float lastAnimationUpdate;
     protected AudioMap audioMap;
+    protected int health;
 
     public Entity(Main game, EntityTypes gameObject, float x, float y) {
         super("Entity", new WorkingQuad(new Vector2f(-gameObject.getWidth() / 2, -gameObject.getHeight() / 2), gameObject.getWidth(), gameObject.getHeight()));
         this.textureMap = new TextureMap(game.getAssetManager(), gameObject.getTextureNames());
         this.lastAnimationUpdate = 0f;
-
         this.audioMap = game.getAudioMap();
+        this.health = 10;
 
         Material material = new Material(game.getAssetManager(), "Common/MatDefs/Light/Lighting.j3md");
         material.setTexture("DiffuseMap", textureMap.getFront());
@@ -89,5 +90,9 @@ public abstract class Entity extends Geometry {
 
     public Vector3f getLocation() {
         return this.physics.getPhysicsLocation();
+    }
+
+    public int getHealth() {
+        return health;
     }
 }
