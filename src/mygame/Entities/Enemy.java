@@ -4,7 +4,9 @@
  */
 package mygame.Entities;
 
+import com.jme3.audio.AudioNode;
 import com.jme3.math.Vector3f;
+import mygame.Config.AudioMap;
 import mygame.Main;
 import mygame.Config.Options;
 
@@ -13,12 +15,15 @@ import mygame.Config.Options;
  * @author lukas
  */
 public class Enemy extends Entity {
+
     private Player player;
-    
+    private AudioNode attack;
+
     public Enemy(Main game, float x, float y) {
         super(game, EntityTypes.Enemy2, x, y);
         this.player = game.getPlayer();
-        
+        this.attack = audioMap.getAudio(AudioMap.Types.AXE);
+                
         this.physics.setFriction(0f);
     }
 
@@ -36,6 +41,8 @@ public class Enemy extends Entity {
         if (e.getClass() == Player.class) {
             Vector3f impulse = this.physics.getLinearVelocity().clone();
             e.physics.applyImpulse(impulse.setY(0).normalize().mult(3), Vector3f.ZERO);
+
+            attack.play();
         }
     }
 }
