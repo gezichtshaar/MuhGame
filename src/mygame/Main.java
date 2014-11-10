@@ -46,7 +46,7 @@ public class Main extends SimpleApplication implements PhysicsCollisionListener 
         this.flyCam.setEnabled(false);
         setDisplayFps(false);
         setDisplayStatView(false);
-        this.audioMap = new AudioMap(assetManager, new AudioMap.Types[]{AudioMap.Types.GUN, AudioMap.Types.AXE});
+        this.audioMap = new AudioMap(assetManager, new AudioMap.Types[]{AudioMap.Types.GUN, AudioMap.Types.AXE, AudioMap.Types.AMBIENCE});
         this.cam.setLocation(new Vector3f(0, 0, 20));
 
         stateManager.attach(bulletAppState);

@@ -35,7 +35,8 @@ public class AudioMap {
        
         public enum Types {
                 GUN("gunshot", false, 3f),
-                AXE("axe", false, 3f);
+                AXE("axe", false, 3f),
+                AMBIENCE("ambience", false, 3f);
        
                 private String location;
                 private boolean stream;
