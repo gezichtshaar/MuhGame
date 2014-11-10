@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package mygame.Updatables;
 
 import com.jme3.font.BitmapFont;
@@ -10,10 +6,6 @@ import com.jme3.math.ColorRGBA;
 import mygame.Entities.Enemy;
 import mygame.Main;
 
-/**
- *
- * @author Skrylax
- */
 public class GuiManager implements Updatable{
 
     private Main game;

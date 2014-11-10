@@ -1,16 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package mygame;
 
 import com.jme3.asset.AssetManager;
 import com.jme3.texture.Texture;
 
-/**
- *
- * @author lukas
- */
 public class TextureMap {
     private Texture[] textures;
     private int centerTexture;

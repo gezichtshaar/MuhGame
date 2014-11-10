@@ -1,21 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package mygame;
  
 import com.jme3.math.Vector2f;
 import com.jme3.scene.Mesh;
 import com.jme3.scene.VertexBuffer.Type;
- 
-/**
-* <code>Quad</code> represents a rectangular plane in space defined by 4
-* vertices. The quad’s lower-left side is contained either at (0, 0, 0), or
-* contained at an origin while the upper-right side is located at the
-* width/height coordinates (width, height, 0).
-*
-* @author Kirill Vainer
-*/
+
 public class WorkingQuad extends Mesh {
     private float width;
     private float height;

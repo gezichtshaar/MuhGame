@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package mygame.Config;
 
 import com.jme3.asset.AssetManager;
@@ -9,10 +5,6 @@ import com.jme3.audio.AudioNode;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *
- * @author Skrylax
- */
 public class AudioMap {
         private Map<Types, AudioNode> audio;
        

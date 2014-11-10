@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package mygame.Entities;
 
 import com.jme3.audio.AudioNode;
@@ -10,10 +6,6 @@ import mygame.Config.AudioMap;
 import mygame.Main;
 import mygame.Config.Options;
 
-/**
- *
- * @author lukas
- */
 public class Enemy extends Entity {
 
     private Player player;
@@ -41,8 +33,8 @@ public class Enemy extends Entity {
         if (e.getClass() == Player.class) {
             Vector3f impulse = this.physics.getLinearVelocity().clone();
             e.physics.applyImpulse(impulse.setY(0).normalize().mult(3), Vector3f.ZERO);
-
             attack.play();
+            e.health -= 1;
         }
     }
 }

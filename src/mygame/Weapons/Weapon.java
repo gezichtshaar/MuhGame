@@ -1,15 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package mygame.Weapons;
 
 import mygame.Entities.Entity;
 
-/**
- *
- * @author lukas
- */
 public abstract class Weapon {
     protected Entity owner;
     private float time;

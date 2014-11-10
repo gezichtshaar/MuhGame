@@ -1,15 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package mygame.Config;
 
 import com.jme3.input.KeyInput;
 
-/**
- *
- * @author lukas
- */
 public enum Keybindings {
     PlayerLeft(KeyInput.KEY_A, "PlayerLeft"),
     PlayerRight(KeyInput.KEY_D, "PlayerRight"),

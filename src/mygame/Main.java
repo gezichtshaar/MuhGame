@@ -18,11 +18,6 @@ import mygame.Updatables.GuiManager;
 import mygame.Updatables.Thunder;
 import mygame.Updatables.Updatable;
 
-/**
- * test
- *
- * @author normenhansen
- */
 public class Main extends SimpleApplication implements PhysicsCollisionListener {
 
     private List<Updatable> updatables;

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package mygame.Entities;
 
 import com.jme3.input.InputManager;
@@ -17,10 +13,6 @@ import mygame.Main;
 import mygame.Weapons.Gun;
 import mygame.Weapons.Weapon;
 
-/**
- *
- * @author lukas
- */
 public class Player extends Entity implements AnalogListener {
     private Camera cam;
     private float vel;

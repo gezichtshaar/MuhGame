@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package mygame.Entities;
 
 import com.jme3.bullet.collision.shapes.CapsuleCollisionShape;
@@ -19,10 +15,6 @@ import mygame.Main;
 import mygame.TextureMap;
 import mygame.WorkingQuad;
 
-/**
- *
- * @author lukas
- */
 public abstract class Entity extends Geometry {
 
     protected RigidBodyControl physics;

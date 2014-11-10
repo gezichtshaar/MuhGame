@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package mygame.Objects;
 
 import com.jme3.bullet.control.RigidBodyControl;
@@ -18,10 +14,6 @@ import com.jme3.texture.Texture;
 import com.jme3.texture.Texture.WrapMode;
 import mygame.Main;
 
-/**
- *
- * @author lukas
- */
 public class Floor extends Node {
     private RigidBodyControl physics;
     

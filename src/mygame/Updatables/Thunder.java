@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package mygame.Updatables;
 
 import com.jme3.audio.AudioNode;
@@ -12,10 +8,6 @@ import mygame.Config.AudioMap;
 import mygame.Config.Options;
 import mygame.Main;
 
-/**
- *
- * @author lukas
- */
 public class Thunder extends AmbientLight implements Updatable {
     private Node attachedNode;
     private float timer;
