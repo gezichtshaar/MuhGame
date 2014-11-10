@@ -4,9 +4,11 @@
  */
 package mygame.Updatables;
 
+import com.jme3.audio.AudioNode;
 import com.jme3.light.AmbientLight;
 import com.jme3.scene.Node;
 import java.util.Random;
+import mygame.Config.AudioMap;
 import mygame.Config.Options;
 import mygame.Main;
 
@@ -18,11 +20,13 @@ public class Thunder extends AmbientLight implements Updatable {
     private Node attachedNode;
     private float timer;
     private boolean isOn;
+    private AudioNode ambience;
     
     public Thunder(Main game) {
         super();
         
         this.attachedNode = game.getRootNode();
+        this.ambience = game.getAudioMap().getAudio(AudioMap.Types.AMBIENCE);
         reset();
     }
 
@@ -36,6 +40,7 @@ public class Thunder extends AmbientLight implements Updatable {
                 this.attachedNode.addLight(this);
             }
             this.isOn = !isOn;
+            ambience.play();
         }
         
         timer -= tpf;

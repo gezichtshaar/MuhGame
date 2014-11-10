@@ -90,7 +90,7 @@ public class Main extends SimpleApplication implements PhysicsCollisionListener 
     }
 
     private void spawnEnemies() {
-        for (int n = 0; n < 20; n++) {
+        for (int n = 0; n < 4; n++) {
             this.rootNode.attachChild(new Enemy(this, n * 20, 30));
         }
     }
