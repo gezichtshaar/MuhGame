@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/C:/Users/lukas/Documents/GitHub/MuhGame/src/mygame/Weapons/Gun.java</file>
+        <file>file:/C:/Users/lukas/Documents/GitHub/MuhGame/src/mygame/Weapons/Weapon.java</file>
+        <file>file:/C:/Users/lukas/Documents/GitHub/MuhGame/src/mygame/Entities/Bullet.java</file>
+        <file>file:/C:/Users/lukas/Documents/GitHub/MuhGame/src/mygame/Entities/Player.java</file>
+        <file>file:/C:/Users/lukas/Documents/GitHub/MuhGame/src/mygame/Updatables/GuiManager.java</file>
+        <file>file:/C:/Users/lukas/Documents/GitHub/MuhGame/src/mygame/Entities/Entity.java</file>
+        <file>file:/C:/Users/lukas/Documents/GitHub/MuhGame/src/mygame/Entities/Enemy.java</file>
+        <file>file:/C:/Users/lukas/Documents/GitHub/MuhGame/src/mygame/Updatables/Thunder.java</file>
+        <file>file:/C:/Users/lukas/Documents/GitHub/MuhGame/src/mygame/Main.java</file>
+    </open-files>
 </project-private>

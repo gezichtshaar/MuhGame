@@ -26,6 +26,17 @@ public class Bullet extends Entity {
     @Override
     public void actOnCollision(Entity e) {
         if (e.getClass() == Enemy.class) {
+            e.setDamage(1);
+            removeFromParent();
         }
+    }
+
+    @Override
+    protected void updateEntity(float tpf) {
+    }
+
+    @Override
+    protected void death() {
+        removeFromParent();
     }
 }

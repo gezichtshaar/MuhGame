@@ -62,9 +62,7 @@ public class Player extends Entity implements AnalogListener {
     }
 
     @Override
-    public void updateLogicalState(float tpf) {
-        super.updateLogicalState(tpf);
-        
+    public void updateEntity(float tpf) {
         weapon.update(tpf);
 
         updateMovement(tpf);
@@ -99,5 +97,11 @@ public class Player extends Entity implements AnalogListener {
     
     public String getWeaponInfo(){
         return this.weapon.toString();
+    }
+
+    @Override
+    protected void death() {
+        this.score = 0;
+        this.reset();
     }
 }

@@ -7,12 +7,13 @@ import mygame.Main;
 import mygame.Config.Options;
 
 public class Enemy extends Entity {
-
+    private Main game;
     private Player player;
     private AudioNode attack;
 
     public Enemy(Main game, float x, float y) {
         super(game, EntityTypes.Enemy2, x, y);
+        this.game = game;
         this.player = game.getPlayer();
         this.attack = audioMap.getAudio(AudioMap.Types.AXE);
                 
@@ -20,8 +21,7 @@ public class Enemy extends Entity {
     }
 
     @Override
-    public void updateLogicalState(float tpf) {
-        super.updateLogicalState(tpf);
+    public void updateEntity(float tpf) {
         if (player.getLocation().subtract(this.physics.getPhysicsLocation()).length() < Options.ENEMY_SPOT_RADIUS) {
             Vector3f vel = new Vector3f(player.getLocation().subtract(this.physics.getPhysicsLocation()).normalize().x * 5, 0, 0);
             this.physics.setLinearVelocity(this.physics.getLinearVelocity().setX(vel.x));
@@ -34,7 +34,17 @@ public class Enemy extends Entity {
             Vector3f impulse = this.physics.getLinearVelocity().clone();
             e.physics.applyImpulse(impulse.setY(0).normalize().mult(3), Vector3f.ZERO);
             attack.play();
-            e.health -= 1;
         }
+    }
+
+    @Override
+    protected void death() {
+        this.reset();
+        parent.attachChild(this.clone());
+    }
+    
+    @Override
+    public Enemy clone() {
+        return new Enemy(game, getLocation().x, getLocation().y);
     }
 }

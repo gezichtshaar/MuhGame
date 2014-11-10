@@ -24,11 +24,11 @@ public class Gun extends Weapon {
             if (bullets.size() >= 10) {
                 owner.getParent().detachChild(bullets.removeLast());
             }
-            Bullet bullet = new Bullet(this.game, owner.getLocation().x, owner.getLocation().y + 1, owner.getVelocity().normalize());
+            Bullet bullet = new Bullet(this.game, owner.getLocation().x + owner.facing().x, owner.getLocation().y + owner.facing().y + 1, owner.facing().setY(0));
             bullets.add(bullet);
             owner.getParent().attachChild(bullet);
             
-            amount--;
+            //amount--;
         }
     }
 

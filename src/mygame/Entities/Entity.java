@@ -16,12 +16,11 @@ import mygame.TextureMap;
 import mygame.WorkingQuad;
 
 public abstract class Entity extends Geometry {
-
     protected RigidBodyControl physics;
     protected TextureMap textureMap;
     private float lastAnimationUpdate;
     protected AudioMap audioMap;
-    protected int health;
+    private int health;
 
     public Entity(Main game, EntityTypes gameObject, float x, float y) {
         super("Entity", new WorkingQuad(new Vector2f(-gameObject.getWidth() / 2, -gameObject.getHeight() / 2), gameObject.getWidth(), gameObject.getHeight()));
@@ -45,7 +44,7 @@ public abstract class Entity extends Geometry {
     }
 
     @Override
-    public void updateLogicalState(float tpf) {
+    public final void updateLogicalState(float tpf) {
         super.updateLogicalState(tpf);
         this.setLocalTranslation(this.getLocalTranslation().setZ(0));
         physics.setPhysicsLocation(physics.getPhysicsLocation().setZ(0));
@@ -62,7 +61,15 @@ public abstract class Entity extends Geometry {
         } else {
             lastAnimationUpdate += tpf;
         }
+        
+        if (this.health <= 0) {
+            this.death();
+        }else{
+            updateEntity(tpf);
+        }
     }
+    
+    protected abstract void updateEntity(float tpf);
 
     private void updateAnimation() {
         if (this.physics.getLinearVelocity().x > Options.ENTITY_ANIMATION_MOVEMENT_TRESHOLD) {
@@ -72,6 +79,18 @@ public abstract class Entity extends Geometry {
         } else {
             this.updateTexture(textureMap.getFront());
         }
+    }
+    
+    public Vector3f facing() {
+        Vector3f v = new Vector3f();
+        if (this.physics.getLinearVelocity().x > Options.ENTITY_ANIMATION_MOVEMENT_TRESHOLD) {
+            v.setX(1);
+        } else if (this.physics.getLinearVelocity().x < -Options.ENTITY_ANIMATION_MOVEMENT_TRESHOLD) {
+            v.setX(-1);
+        } else {
+            v.setY(1);
+        }
+        return v;
     }
 
     protected void updateTexture(Texture texture) {
@@ -91,4 +110,14 @@ public abstract class Entity extends Geometry {
     public int getHealth() {
         return health;
     }
+    
+    public void setDamage(float amount) {
+        this.health -= amount;
+    }
+    
+    public void reset() {
+        this.health = 10;
+    }
+    
+    protected abstract void death();
 }
