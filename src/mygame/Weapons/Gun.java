@@ -30,15 +30,14 @@ public class Gun extends Weapon {
     public void attack(float tpf) {
         if (amount > 0) {
             if (bullets.size() >= 10) {
-                bullets.removeLast();
+                owner.getParent().detachChild(bullets.removeLast());
             }
-            Bullet bullet = new Bullet(this.game, owner.getLocation().x, owner.getLocation().y + 1, new Vector3f(1, 0, 0));
+            Bullet bullet = new Bullet(this.game, owner.getLocation().x, owner.getLocation().y + 1, owner.getVelocity().normalize());
             bullets.add(bullet);
             owner.getParent().attachChild(bullet);
             
             amount--;
         }
-        setAttacking(false);
     }
 
     @Override

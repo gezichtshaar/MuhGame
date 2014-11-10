@@ -30,6 +30,7 @@ public abstract class Weapon {
             attack(tpf);
             this.time = 0f;
         }
+        this.isAttacking = false;
         this.time += tpf;
     }
     

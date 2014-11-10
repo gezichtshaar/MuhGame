@@ -63,7 +63,7 @@ public class Player extends Entity implements AnalogListener {
         if (Keybindings.PlayerRight.getName().equals(name)) {
             vel = 1;
         }
-
+        
         if (Keybindings.PlayerShoot.getName().equals(name)) {
             this.weapon.setAttacking(true);
         }

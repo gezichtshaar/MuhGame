@@ -91,6 +91,10 @@ public abstract class Entity extends Geometry {
     public Vector3f getLocation() {
         return this.physics.getPhysicsLocation();
     }
+    
+    public Vector3f getVelocity() {
+        return this.physics.getLinearVelocity();
+    }
 
     public int getHealth() {
         return health;
