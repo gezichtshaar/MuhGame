@@ -33,14 +33,18 @@ public class Enemy extends Entity {
         if (e.getClass() == Player.class) {
             Vector3f impulse = this.physics.getLinearVelocity().clone();
             e.physics.applyImpulse(impulse.setY(0).normalize().mult(3), Vector3f.ZERO);
+            e.setDamage(1);
             attack.play();
         }
     }
 
     @Override
-    protected void death() {
-        this.reset();
-        parent.attachChild(this.clone());
+    public void death() {
+        player.increaseScore(100);
+        this.physics.setEnabled(false);
+        removeFromParent();
+        game.spawnEnemy();
+        game.spawnEnemy();
     }
     
     @Override

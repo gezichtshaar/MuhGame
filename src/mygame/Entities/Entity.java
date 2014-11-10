@@ -27,7 +27,7 @@ public abstract class Entity extends Geometry {
         this.textureMap = new TextureMap(game.getAssetManager(), gameObject.getTextureNames());
         this.lastAnimationUpdate = 0f;
         this.audioMap = game.getAudioMap();
-        this.health = 10;
+        this.health = 100;
 
         Material material = new Material(game.getAssetManager(), "Common/MatDefs/Light/Lighting.j3md");
         material.setTexture("DiffuseMap", textureMap.getFront());
@@ -83,12 +83,10 @@ public abstract class Entity extends Geometry {
     
     public Vector3f facing() {
         Vector3f v = new Vector3f();
-        if (this.physics.getLinearVelocity().x > Options.ENTITY_ANIMATION_MOVEMENT_TRESHOLD) {
-            v.setX(1);
-        } else if (this.physics.getLinearVelocity().x < -Options.ENTITY_ANIMATION_MOVEMENT_TRESHOLD) {
-            v.setX(-1);
-        } else {
+        if (textureMap.facing() == 0) {
             v.setY(1);
+        }else{
+            v.setX(textureMap.facing());
         }
         return v;
     }
@@ -119,5 +117,5 @@ public abstract class Entity extends Geometry {
         this.health = 10;
     }
     
-    protected abstract void death();
+    public abstract void death();
 }

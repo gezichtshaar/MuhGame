@@ -21,10 +21,10 @@ public class Gun extends Weapon {
     @Override
     public void attack(float tpf) {
         if (amount > 0) {
-            if (bullets.size() >= 10) {
-                owner.getParent().detachChild(bullets.removeLast());
+            while (bullets.size() >= 10) {
+                bullets.removeLast().death();
             }
-            Bullet bullet = new Bullet(this.game, owner.getLocation().x + owner.facing().x, owner.getLocation().y + owner.facing().y + 1, owner.facing().setY(0));
+            Bullet bullet = new Bullet(this.game, owner.getLocation().x + owner.facing().x, owner.getLocation().y + owner.facing().y * 2, owner.facing());
             bullets.add(bullet);
             owner.getParent().attachChild(bullet);
             
@@ -39,6 +39,6 @@ public class Gun extends Weapon {
 
     @Override
     protected float getAPS() {
-        return 0.5f;
+        return 0.2f;
     }
 }

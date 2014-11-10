@@ -100,8 +100,12 @@ public class Player extends Entity implements AnalogListener {
     }
 
     @Override
-    protected void death() {
+    public void death() {
         this.score = 0;
         this.reset();
+    }
+
+    public void increaseScore(int score) {
+        this.score += score;
     }
 }

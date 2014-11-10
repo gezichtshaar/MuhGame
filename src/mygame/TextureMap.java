@@ -51,4 +51,14 @@ public class TextureMap {
     public Texture getTexture() {
         return textures[this.lastTexture];
     }
+    
+    public int facing() {
+        if (lastTexture < centerTexture) {
+            return -1;
+        }else if(lastTexture > centerTexture) {
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 }

@@ -9,6 +9,7 @@ import com.jme3.math.Vector3f;
 import com.jme3.renderer.RenderManager;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import mygame.Config.AudioMap;
 import mygame.Entities.Enemy;
 import mygame.Entities.Entity;
@@ -19,7 +20,6 @@ import mygame.Updatables.Thunder;
 import mygame.Updatables.Updatable;
 
 public class Main extends SimpleApplication implements PhysicsCollisionListener {
-
     private List<Updatable> updatables;
     private BulletAppState bulletAppState;
     private Player player;
@@ -77,7 +77,7 @@ public class Main extends SimpleApplication implements PhysicsCollisionListener 
     }
 
     private void buildFloors() {
-        for (int x = 0; x < 10; x++) {
+        for (int x = 0; x < 5; x++) {
             for (int y = 0; y < 5; y++) {
                 rootNode.attachChild(new Floor(this, x * 15, y * 8, 5f));
             }
@@ -85,8 +85,8 @@ public class Main extends SimpleApplication implements PhysicsCollisionListener 
     }
 
     private void spawnEnemies() {
-        for (int n = 0; n < 4; n++) {
-            this.rootNode.attachChild(new Enemy(this, n * 20, 30));
+        for (int n = 0; n < 5; n++) {
+            spawnEnemy(n * 15 + 2, 30);
         }
     }
 
@@ -104,5 +104,13 @@ public class Main extends SimpleApplication implements PhysicsCollisionListener 
 
     public BitmapFont getGuiFont() {
         return guiFont;
+    }
+    
+    public void spawnEnemy() {
+        spawnEnemy(new Random().nextInt(150), 30);
+    }
+
+    public void spawnEnemy(int x, int y) {
+        this.rootNode.attachChild(new Enemy(this, x, y));
     }
 }
