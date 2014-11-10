@@ -10,6 +10,35 @@ import mygame.Entities.Entity;
  *
  * @author lukas
  */
-public interface Weapon {
-    public void attack(Entity e);
+public abstract class Weapon {
+    protected Entity owner;
+    private float time;
+    private boolean isAttacking;
+    
+    public Weapon(Entity owner) {
+        this.owner = owner;
+        this.time = 0f;
+        this.isAttacking = false;
+    }
+    
+    public void setAttacking(boolean isAttacking) {
+        this.isAttacking = isAttacking;
+    }
+    
+    public void update(float tpf) {
+        if (isAttacking && this.time >= this.getAPS()) {
+            attack(tpf);
+            this.time = 0f;
+        }
+        this.time += tpf;
+    }
+    
+    public abstract void attack(float tpf);
+    
+    protected abstract float getAPS(); //Attacks per second
+
+    @Override
+    public String toString() {
+        return "Unknown";
+    }
 }

@@ -40,9 +40,7 @@ public class GuiManager implements Updatable{
 
     public void update(float tpf) {
         scoreText.setText(String.format("Score: %d\n", game.getPlayer().getScore()));
-        playerAmmo.setText(String.format("Ammo: %d\n", game.getPlayer().getAmmo()));
+        playerAmmo.setText(String.format(game.getPlayer().getWeaponInfo()));
         playerHealth.setText(String.format("Health: %d\n", game.getPlayer().getHealth()));
     }
-    
-    
 }

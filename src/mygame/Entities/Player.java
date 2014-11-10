@@ -22,7 +22,6 @@ import mygame.Weapons.Weapon;
  * @author lukas
  */
 public class Player extends Entity implements AnalogListener {
-
     private Camera cam;
     private float vel;
     private float zoom;
@@ -35,7 +34,7 @@ public class Player extends Entity implements AnalogListener {
         this.cam = cam;
         this.vel = 0f;
         this.zoom = 0f;
-        this.weapon = new Gun(game, 10);
+        this.weapon = new Gun(game, this, 10);
         this.score = 100;
 
         this.light = new PointLight();
@@ -66,12 +65,15 @@ public class Player extends Entity implements AnalogListener {
         }
 
         if (Keybindings.PlayerShoot.getName().equals(name)) {
+            this.weapon.setAttacking(true);
         }
     }
 
     @Override
     public void updateLogicalState(float tpf) {
         super.updateLogicalState(tpf);
+        
+        weapon.update(tpf);
 
         updateMovement(tpf);
         updateCamera(tpf);
@@ -103,7 +105,7 @@ public class Player extends Entity implements AnalogListener {
         return score;
     }
     
-    public int getAmmo(){
-        return 1337;
+    public String getWeaponInfo(){
+        return this.weapon.toString();
     }
 }

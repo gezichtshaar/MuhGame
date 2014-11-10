@@ -14,23 +14,40 @@ import mygame.Main;
  *
  * @author lukas
  */
-public class Gun implements Weapon {
+public class Gun extends Weapon {
     private Main game;
     private LinkedList<Bullet> bullets;
     private int amount;
     
-    public Gun(Main game, int amount) {
+    public Gun(Main game, Entity owner, int amount) {
+        super(owner);
         this.game = game;
         this.amount = amount;
         this.bullets = new LinkedList<Bullet>();
     }
 
-    public void attack(Entity e) {
-        if (amount-- > 0) {
+    @Override
+    public void attack(float tpf) {
+        if (amount > 0) {
             if (bullets.size() >= 10) {
                 bullets.removeLast();
             }
-            bullets.add(new Bullet(game, e.getLocation().x, e.getLocation().y + 1, new Vector3f(1, 0, 0)));
+            Bullet bullet = new Bullet(this.game, owner.getLocation().x, owner.getLocation().y + 1, new Vector3f(1, 0, 0));
+            bullets.add(bullet);
+            owner.getParent().attachChild(bullet);
+            
+            amount--;
         }
+        setAttacking(false);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Gun, Ammo: %d\n", amount);
+    }
+
+    @Override
+    protected float getAPS() {
+        return 0.5f;
     }
 }
